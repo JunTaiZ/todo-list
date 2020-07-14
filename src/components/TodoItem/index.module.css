@@ -1,0 +1,14 @@
+.container {
+    padding: 3px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .body {
+    flex: 1;
+    display: flex;
+}
+
+.container .delete {
+    padding: 3px 0;
+}
