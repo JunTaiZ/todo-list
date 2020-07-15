@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import TodoItem from "components/TodoItem";
 import {IPTodo} from 'types/index'
+import {Container} from "@material-ui/core";
+import './index.css'
+import AddIcon from '@material-ui/icons/Add';
 
 export default () => {
     const localTodoList = localStorage.getItem('todolist')
@@ -8,7 +11,8 @@ export default () => {
     let doneList = todoList.filter((value: IPTodo) => value.done)
     let doingList = todoList.filter((value: IPTodo) => !value.done)
 
-    // const [inputValue, setInputValue] = useState('')
+
+    const [inputValue, setInputValue] = useState('')
     // if (localTodoList) {
     //     setTodoList(JSON.parse(localTodoList))
     // }
@@ -29,6 +33,7 @@ export default () => {
     }
 
     function addTodoItem(aTitle: string): boolean {
+        if (aTitle.length === 0) return false
         if (newItemExist(aTitle)) {
             alert('已存在该任务')
             return false
@@ -51,20 +56,30 @@ export default () => {
         }))
     }
 
+
     function clickEnter(event: { key: string, currentTarget: HTMLInputElement }): void {
-        console.log(event.currentTarget)
+        // console.log(event.currentTarget)
+        setInputValue(event.currentTarget.value)
         if (event.key === 'Enter') {
             if (addTodoItem(event.currentTarget.value)) {
                 event.currentTarget.value = ''
+                setInputValue('')
             }
 
         }
     }
 
+    function clickAddTodoItem() {
+
+        if (addTodoItem(inputValue)) {
+            setInputValue('')
+        }
+    }
+
 
     return (
-        <div>
-            <div>
+        <Container maxWidth={"xs"}>
+            <div className={"todoListContainer"}>
                 {doingList.map((value: IPTodo) => {
                     return <TodoItem
                         key={value.title} item={value}
@@ -80,11 +95,16 @@ export default () => {
                     />
                 })}
             </div>
-            <div>
-                <input type="text"
-                       onKeyDown={clickEnter}
+            <div className={"inputContainer"}>
+                <input
+                    value={inputValue}
+                    placeholder={"请输入任务名"}
+                    type="text"
+                    onKeyPress={clickEnter}
+                    onChange={(event) => setInputValue(event.target.value)}
                 />
+                <div onClick={clickAddTodoItem}><AddIcon /></div>
             </div>
-        </div>
+        </Container>
     )
 }

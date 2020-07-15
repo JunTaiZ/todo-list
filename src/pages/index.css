@@ -1,0 +1,26 @@
+.todoListContainer {
+
+}
+.inputContainer {
+    width: 80%;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    border-top: 1px solid #FEC;
+    justify-content: space-between;
+    align-items: center;
+}
+.inputContainer input {
+    outline: none;
+    border: none;
+    flex: 1;
+    padding: 18px 5px;
+    color: #555;
+    font-size: 0.8rem;
+}
+.inputContainer div {
+    font-size: 1rem;
+    color: #ff5722;
+ }

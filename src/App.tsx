@@ -1,5 +1,5 @@
 import React, {ReactElement, useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import {
     Root,
     // Routes,
@@ -14,26 +14,29 @@ import './app.css'
 // import Link from 'components/Link'
 
 // import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+// import BottomNavigation from '@material-ui/core/BottomNavigation';
+// import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 // import RestoreIcon from '@material-ui/icons/Restore';
 // import FavoriteIcon from '@material-ui/icons/Favorite';
 // import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-const useStyles = makeStyles({
-    nav: {
-        position: 'fixed',
-        bottom: '0',
-        width: '100%',
-    },
-});
+// const useStyles = makeStyles({
+//     nav: {
+//         position: 'fixed',
+//         bottom: '0',
+//         width: '100%',
+//     },
+// });
 
 
 addPrefetchExcludes(['dynamic'])
 
 function App() {
-    const classes = useStyles()
-    const [route, setRoute] = useState('/')
+    // const classes = useStyles()
+    const [
+        route,
+        // setRoute
+    ] = useState('/')
 
     const localTodoList = localStorage.getItem('todolist')
     if (!localTodoList) {
@@ -71,18 +74,18 @@ function App() {
                     <Router />
                 </React.Suspense>
             </div>
-            <BottomNavigation
-                value={route}
-                onChange={(_event, newValue) => {
-                    setRoute(newValue);
-                }}
-                className={classes.nav}
-                showLabels
-            >
-                <BottomNavigationAction label="进行中" value="/" />
-                <BottomNavigationAction label="已完成" value="/done" />
-                {/*<BottomNavigationAction label="Not" value="/ne" icon={<LocationOnIcon />} />*/}
-            </BottomNavigation>
+            {/*<BottomNavigation*/}
+            {/*    value={route}*/}
+            {/*    onChange={(_event, newValue) => {*/}
+            {/*        setRoute(newValue);*/}
+            {/*    }}*/}
+            {/*    className={classes.nav}*/}
+            {/*    showLabels*/}
+            {/*>*/}
+            {/*    <BottomNavigationAction label="进行中" value="/" />*/}
+            {/*    <BottomNavigationAction label="已完成" value="/done" />*/}
+            {/*    /!*<BottomNavigationAction label="Not" value="/ne" icon={<LocationOnIcon />} />*!/*/}
+            {/*</BottomNavigation>*/}
         </Root>
     )
 }

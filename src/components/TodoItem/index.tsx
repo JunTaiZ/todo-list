@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import {IPTodoItem} from "types/index";
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import CheckIcon from '@material-ui/icons/Check';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import './index.module.css';
 import DeleteIcon from '@material-ui/icons/Delete';
+
 
 const TodoItem: React.FC<IPTodoItem> = (props) => {
     // const [count, setCount] = useState(0);
@@ -11,16 +12,17 @@ const TodoItem: React.FC<IPTodoItem> = (props) => {
         console.log('hook');
     });
 
+    const bodyClassName = props.item.done ? 'done' : 'doing'
 
     function Element() {
 
         if (props.item.done) {
             return (
-                <CheckCircleOutlineIcon color={"primary"}/>
+                <CheckIcon fontSize={"small"}/>
             )
         } else {
             return (
-                <RadioButtonUncheckedIcon color={"secondary"}/>
+                <RadioButtonUncheckedIcon color={"primary"} fontSize={"small"}/>
             )
         }
     }
@@ -36,12 +38,12 @@ const TodoItem: React.FC<IPTodoItem> = (props) => {
 
     return (
         <div className="container">
-            <div className="body" onClick={bindClick}>
-                <Element />
+            <div className={"body " + bodyClassName} onClick={bindClick}>
+                <Element/>
                 <div>{props.item.title}</div>
             </div>
             <div className={"delete"} onClick={clickDeleteItem}>
-                <DeleteIcon />
+                <DeleteIcon color={"action"} fontSize={"small"}/>
             </div>
         </div>
     )

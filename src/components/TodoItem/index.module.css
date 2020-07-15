@@ -1,14 +1,39 @@
 .container {
-    padding: 3px 0;
+    padding: 3px 0 5px;
     display: flex;
     justify-content: space-between;
 }
 
 .container .body {
+    cursor: pointer;
     flex: 1;
     display: flex;
+    align-items: center;
+}
+.container .body svg {
+    padding-top: 2px;
+    margin-right: 8px;
+}
+.container .body.doing {
+    font-weight: bold;
+    color: #333;
+}
+.container .body.done {
+    color: #888;
+}
+
+.container .body div {
+    font-size: 0.8rem;
+}
+.container .body.done svg {
+    color: #4caf50;
 }
 
 .container .delete {
-    padding: 3px 0;
+    padding: 3px 0 5px;
+    font-size: 10px;
+    cursor: pointer;
+}
+.container .delete svg {
+    font-size: 1.1rem !important;
 }
